@@ -15,5 +15,10 @@
     "pinia": "^2.1.7",
     "vue": "^3.4.27",
     "vue-router": "^4.3.2"
+  },
+  "devDependencies": {
+    "json-server": "^1.0.0-beta.0",
+    "sass": "^1.77.2",
+    "sass-loader": "^14.2.1"
   }
 }
