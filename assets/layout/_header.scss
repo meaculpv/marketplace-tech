@@ -1,7 +1,6 @@
 .header {
-  height: 5vh;
   @include flexboxCenter();
-  margin-bottom: 2rem;
+  margin: 2rem 0;
 }
 
 .navigation {

@@ -8,7 +8,10 @@
 </script>
 <template>
   <div>
-    <div class="favorite">
+    <div class="favorite u-marginTop-sm" v-if="favorites?.length > 0">
+      <h2 class="heading-secondary u-center-text u-marginBottom-sm">
+        Favorites
+      </h2>
       <section class="section-products">
         <div v-for="product in favorites" :key="product.id" class="product">
           <div class="product__header">
@@ -34,6 +37,10 @@
           </div>
         </div>
       </section>
+    </div>
+
+    <div class="favorite u-marginTop-sm" v-else>
+      <h2 class="heading-secondary u-center-text">There is no favorites</h2>
     </div>
   </div>
 </template>
