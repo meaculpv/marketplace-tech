@@ -2,8 +2,13 @@
   // const { products, setCategory, setFilter, fetchProducts, sortedProducts } =
   //   useProductsStore();
   const productsStore = useProductsStore();
-  const { sortedProducts } = storeToRefs(productsStore);
+  const { sortedProducts, selectedCategory, selectedFilter } =
+    storeToRefs(productsStore);
   const searchInput = ref<string | null>('');
+
+  watch([selectedCategory, selectedFilter], () => {
+    productsStore.updateQueryParams();
+  });
 
   await callOnce(async () => {
     await productsStore.fetchProducts();

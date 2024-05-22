@@ -1,6 +1,8 @@
 import type { iProduct } from '~/shared/types/Product';
 
 export const useProductsStore = defineStore('products', () => {
+  const router = useRouter();
+
   const products = ref<iProduct[] | null>(null);
   const selectedCategory = ref<string | null>(null);
   const selectedFilter = ref<string>('All');
@@ -50,6 +52,12 @@ export const useProductsStore = defineStore('products', () => {
     selectedFilter.value = filter;
   }
 
+  function updateQueryParams() {
+    router.push({
+      query: { category: selectedCategory.value, filter: selectedFilter.value },
+    });
+  }
+
   return {
     products,
     selectedCategory,
@@ -58,5 +66,6 @@ export const useProductsStore = defineStore('products', () => {
     setCategory,
     setFilter,
     fetchProducts,
+    updateQueryParams,
   };
 });
