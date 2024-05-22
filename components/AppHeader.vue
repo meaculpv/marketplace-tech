@@ -11,7 +11,7 @@
           >
         </li>
         <li class="navigation__item">
-          <NuxtLink to="/bucket" class="navigation__link">Bucket</NuxtLink>
+          <NuxtLink to="/cart" class="navigation__link">Cart</NuxtLink>
         </li>
       </ul>
     </nav>
