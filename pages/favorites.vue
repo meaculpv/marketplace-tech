@@ -2,6 +2,8 @@
   const favoritesStore = useFavoritesStore();
   const { favorites } = storeToRefs(favoritesStore);
 
+  const cartStore = useCartStore();
+
   useHead({
     title: 'Marketplace - Favorites',
   });
@@ -33,7 +35,10 @@
               class="product__action"
               @click="favoritesStore.removeFav(product)"
             />
-            <CartIcon class="product__action" />
+            <CartIcon
+              class="product__action"
+              @click="cartStore.addToCart({ id: product.id, quantity: 1 })"
+            />
           </div>
         </div>
       </section>

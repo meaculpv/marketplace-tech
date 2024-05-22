@@ -1,3 +1,7 @@
+<script setup lang="ts">
+  const cartStore = useCartStore();
+  const { total } = storeToRefs(cartStore);
+</script>
 <template>
   <header class="header">
     <nav class="navigation__nav">
@@ -11,7 +15,9 @@
           >
         </li>
         <li class="navigation__item">
-          <NuxtLink to="/cart" class="navigation__link">Cart</NuxtLink>
+          <NuxtLink to="/cart" class="navigation__link"
+            >Cart: {{ total }}</NuxtLink
+          >
         </li>
       </ul>
     </nav>
