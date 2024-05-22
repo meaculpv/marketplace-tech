@@ -5,6 +5,9 @@
 
   const favoritesStore = useFavoritesStore();
   const { favorites } = storeToRefs(favoritesStore);
+
+  const cartStore = useCartStore();
+
   watch([selectedCategory, selectedFilter, searchQuery], () => {
     productsStore.updateQueryParams();
   });
@@ -104,7 +107,10 @@
             @click="favoritesStore.removeFav(product)"
             v-else
           />
-          <CartIcon class="product__action" />
+          <CartIcon
+            class="product__action"
+            @click="cartStore.addToCart({ id: product.id, quantity: 1 })"
+          />
         </div>
       </div>
     </section>

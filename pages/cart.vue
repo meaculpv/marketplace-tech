@@ -1,6 +1,17 @@
 <script setup lang="ts">
   const cartStore = useCartStore();
   const { items, detailedItems, totalPrice } = storeToRefs(cartStore);
+
+  const deleteButton = ref(null);
+  const quantityInput = ref(null);
+  const paymentButton = ref(null);
+
+  // function pay() {
+  //   cartStore.pay();
+  //   quantityInput.value.disabled = true;
+  //   deleteButton.value.disabled = true;
+  //   paymentButton.value.disabled = true;
+  // }
 </script>
 <template>
   <div class="bucket" v-if="items.length > 0">
@@ -22,6 +33,7 @@
             type="number"
             class="cart__quantity"
             v-model="item.quantity"
+            ref="quantityInput"
           />
         </div>
         <div class="cart__col--3">
@@ -29,14 +41,20 @@
           <p class="cart__price">${{ item.price * item.quantity }}</p>
         </div>
         <div class="cart__col--4">
-          <button class="cart__delete" @click="cartStore.remove(item.id)">
+          <button
+            ref="deleteButton"
+            class="cart__delete"
+            @click="cartStore.remove(item.id)"
+          >
             Delete
           </button>
         </div>
       </div>
       <div class="cart__action">
         <p>Summary price: ${{ totalPrice }}</p>
-        <button class="cart__pay" @click="cartStore.pay()">Pay</button>
+        <button ref="paymentButton" class="cart__pay" @click="cartStore.pay">
+          Pay
+        </button>
       </div>
     </section>
   </div>
