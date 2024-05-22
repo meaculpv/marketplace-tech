@@ -2,7 +2,7 @@ import type { CartItem } from '~/shared/types/Cart';
 
 export const useCartStore = defineStore('cart', () => {
   const items = reactive<CartItem[]>([]);
-  const paidItems = ref<CartItem[]>([]);
+  const paidItems = reactive<CartItem[]>([]);
 
   const total = computed(() => {
     return items.reduce((acc, item) => {
@@ -14,6 +14,22 @@ export const useCartStore = defineStore('cart', () => {
     const { products } = useProductsStore();
 
     return items.map((item) => {
+      const product = products?.find((product) => product.id === item.id);
+
+      return {
+        ...product,
+        title: product?.title,
+        image: product?.image,
+        price: product?.price,
+        quantity: item.quantity,
+      };
+    });
+  });
+
+  const detailedPaidItems = computed(() => {
+    const { products } = useProductsStore();
+
+    return paidItems.map((item) => {
       const product = products?.find((product) => product.id === item.id);
 
       return {
@@ -62,7 +78,7 @@ export const useCartStore = defineStore('cart', () => {
       }
     });
 
-    paidItems.value.push(...items);
+    paidItems.push(...items);
     items.splice(0, items.length);
   }
 
@@ -79,6 +95,7 @@ export const useCartStore = defineStore('cart', () => {
     total,
     totalPrice,
     detailedItems,
+    detailedPaidItems,
     addToCart,
     update,
     pay,
