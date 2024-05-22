@@ -97,16 +97,18 @@
           <h3 class="product__title">{{ product.title }}</h3>
         </div>
         <div class="product__footer">
-          <FavoriteIcon
-            class="product__action"
-            @click="favoritesStore.addToFav(product)"
-            v-if="favorites?.findIndex((fav) => fav.id === product.id) === -1"
-          />
-          <SolidFavoriteIcon
-            class="product__action"
-            @click="favoritesStore.removeFav(product)"
-            v-else
-          />
+          <TransitionGroup name="icon">
+            <FavoriteIcon
+              class="product__action"
+              @click="favoritesStore.addToFav(product)"
+              v-if="favorites?.findIndex((fav) => fav.id === product.id) === -1"
+            />
+            <SolidFavoriteIcon
+              class="product__action"
+              @click="favoritesStore.removeFav(product)"
+              v-else
+            />
+          </TransitionGroup>
           <CartIcon
             class="product__action"
             @click="cartStore.addToCart({ id: product.id, quantity: 1 })"

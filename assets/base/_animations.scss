@@ -17,3 +17,34 @@
   opacity: 0;
   filter: blur(1rem);
 }
+
+.page-enter-active,
+.page-leave-active {
+  transition: all 0.4s;
+}
+.page-enter-from,
+.page-leave-to {
+  opacity: 0;
+  filter: blur(1rem);
+}
+
+.cart-enter-active,
+.cart-leave-active {
+  transition: all 0.4s;
+}
+.cart-enter-from,
+.cart-leave-to {
+  transform: scale(0);
+  opacity: 0;
+  filter: blur(1rem);
+}
+
+.icon-enter-active,
+.icon-leave-active {
+  transition: all 0.4s;
+}
+.icon-enter-from,
+.icon-leave-to {
+  opacity: 0;
+  filter: blur(1rem);
+}

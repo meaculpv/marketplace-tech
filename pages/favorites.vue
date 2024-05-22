@@ -45,7 +45,9 @@
     </div>
 
     <div class="favorite u-marginTop-sm" v-else>
-      <h2 class="heading-secondary u-center-text">There is no favorites</h2>
+      <h2 class="heading-secondary u-center-text">
+        There is no favorites. Go to <NuxtLink to="/">Products page</NuxtLink>
+      </h2>
     </div>
   </div>
 </template>
