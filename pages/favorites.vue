@@ -1,6 +1,6 @@
 <script setup lang="ts">
   const favoritesStore = useFavoritesStore();
-  const { favorites } = favoritesStore;
+  const { favorites } = storeToRefs(favoritesStore);
 
   useHead({
     title: 'Marketplace - Favorites',
@@ -26,7 +26,10 @@
             <h3 class="product__title">{{ product.title }}</h3>
           </div>
           <div class="product__footer">
-            <SolidFavoriteIcon class="product__action" />
+            <SolidFavoriteIcon
+              class="product__action"
+              @click="favoritesStore.removeFav(product)"
+            />
             <CartIcon class="product__action" />
           </div>
         </div>

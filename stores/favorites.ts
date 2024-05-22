@@ -14,7 +14,13 @@ export const useFavoritesStore = defineStore('favorites', () => {
   }
 
   function removeFav(product: iProduct) {
-    favorites.value?.filter((fav) => fav.id !== product.id);
+    favorites.value = favorites.value?.filter((fav) => {
+      console.log(fav.id, product.id);
+
+      if (fav.id !== product.id) {
+        return fav;
+      }
+    });
   }
 
   return {
