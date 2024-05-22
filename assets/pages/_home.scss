@@ -1,0 +1,14 @@
+.home {
+  display: flex;
+}
+
+.section-products {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 1rem;
+}
+
+.filters {
+  flex-basis: 15%;
+}

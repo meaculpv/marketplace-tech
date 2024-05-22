@@ -1,1 +1,13 @@
+@import './abstract/variables';
+@import './abstract/variables';
+
+@import './base/animations';
 @import './base/base';
+@import './base/typography';
+
+@import './layout/header';
+
+@import './pages/home';
+
+@import './components/productCard';
+@import './components/category';

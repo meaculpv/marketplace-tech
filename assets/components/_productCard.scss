@@ -1,0 +1,39 @@
+.product {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  padding: 1rem;
+  border-radius: 1rem;
+  border: 1px solid #eee;
+
+  width: 40rem;
+  // box-shadow: 0 1rem 40rem rgba($color: $color-black, $alpha: 0.1);
+  &__header {
+    height: 21rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    // border: 2px solid $color-black;
+  }
+  &__image {
+    height: 20rem;
+    width: 100%;
+    object-fit: contain;
+  }
+  &__body {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+  }
+  &__price {
+    font-size: $default-font-size;
+  }
+  &__title {
+    font-size: 1.8rem;
+    font-weight: 500;
+  }
+  &__footer {
+  }
+  &__action {
+  }
+}
