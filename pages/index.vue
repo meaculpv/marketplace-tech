@@ -1,11 +1,10 @@
 <script setup lang="ts">
-  // const { products, setCategory, setFilter, fetchProducts, sortedProducts } =
-  //   useProductsStore();
   const productsStore = useProductsStore();
   const { sortedProducts, selectedCategory, selectedFilter, searchQuery } =
     storeToRefs(productsStore);
-  const searchInput = ref<string | null>('');
 
+  const favoritesStore = useFavoritesStore();
+  const { favorites } = storeToRefs(favoritesStore);
   watch([selectedCategory, selectedFilter, searchQuery], () => {
     productsStore.updateQueryParams();
   });
@@ -95,7 +94,16 @@
           <h3 class="product__title">{{ product.title }}</h3>
         </div>
         <div class="product__footer">
-          <FavoriteIcon class="product__action" />
+          <FavoriteIcon
+            class="product__action"
+            @click="favoritesStore.addToFav(product)"
+            v-if="favorites?.findIndex((fav) => fav.id === product.id) === -1"
+          />
+          <SolidFavoriteIcon
+            class="product__action"
+            @click="favoritesStore.removeFav(product)"
+            v-else
+          />
           <CartIcon class="product__action" />
         </div>
       </div>
