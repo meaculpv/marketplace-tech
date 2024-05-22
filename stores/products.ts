@@ -1,11 +1,13 @@
 import type { iProduct } from '~/shared/types/Product';
 
 export const useProductsStore = defineStore('products', () => {
+  const route = useRoute();
   const router = useRouter();
 
   const products = ref<iProduct[] | null>(null);
   const selectedCategory = ref<string | null>(null);
   const selectedFilter = ref<string>('All');
+  const searchQuery = ref<string>((route.query.search as string) || '');
 
   const sortedProducts = computed(() => {
     if (!products.value) return [];
@@ -26,6 +28,12 @@ export const useProductsStore = defineStore('products', () => {
     if (selectedCategory.value && selectedCategory.value !== 'All') {
       sorted = sorted.filter(
         (product) => product.category === selectedCategory.value
+      );
+    }
+
+    if (searchQuery.value) {
+      sorted = sorted.filter((product) =>
+        product.title.toLowerCase().includes(searchQuery.value.toLowerCase())
       );
     }
 
@@ -54,12 +62,17 @@ export const useProductsStore = defineStore('products', () => {
 
   function updateQueryParams() {
     router.push({
-      query: { category: selectedCategory.value, filter: selectedFilter.value },
+      query: {
+        category: selectedCategory.value,
+        filter: selectedFilter.value,
+        search: searchQuery.value,
+      },
     });
   }
 
   return {
     products,
+    searchQuery,
     selectedCategory,
     selectedFilter,
     sortedProducts,

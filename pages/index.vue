@@ -2,12 +2,16 @@
   // const { products, setCategory, setFilter, fetchProducts, sortedProducts } =
   //   useProductsStore();
   const productsStore = useProductsStore();
-  const { sortedProducts, selectedCategory, selectedFilter } =
+  const { sortedProducts, selectedCategory, selectedFilter, searchQuery } =
     storeToRefs(productsStore);
   const searchInput = ref<string | null>('');
 
-  watch([selectedCategory, selectedFilter], () => {
+  watch([selectedCategory, selectedFilter, searchQuery], () => {
     productsStore.updateQueryParams();
+  });
+
+  useHead({
+    title: 'Marketplace - Products',
   });
 
   await callOnce(async () => {
@@ -18,7 +22,7 @@
   <div class="home">
     <aside class="filters">
       <form class="search">
-        <input class="search__input" type="search" v-model="searchInput" />
+        <input class="search__input" type="search" v-model="searchQuery" />
         <SearchIcon class="search__button" />
       </form>
       <div class="category">
