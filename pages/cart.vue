@@ -29,12 +29,14 @@
           <p class="cart__price">${{ item.price * item.quantity }}</p>
         </div>
         <div class="cart__col--4">
-          <button class="cart__delete">Delete</button>
+          <button class="cart__delete" @click="cartStore.remove(item.id)">
+            Delete
+          </button>
         </div>
       </div>
       <div class="cart__action">
         <p>Summary price: ${{ totalPrice }}</p>
-        <button class="cart__pay">Pay</button>
+        <button class="cart__pay" @click="cartStore.pay()">Pay</button>
       </div>
     </section>
   </div>
