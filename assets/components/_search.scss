@@ -1,0 +1,11 @@
+.search {
+  display: flex;
+
+  &__input {
+    width: 10rem;
+  }
+  &__button {
+    cursor: pointer;
+    border: 1px solid $color-black;
+  }
+}

@@ -27,13 +27,18 @@
   }
   &__price {
     font-size: $default-font-size;
+    letter-spacing: 1px;
   }
   &__title {
     font-size: 1.8rem;
     font-weight: 500;
   }
   &__footer {
+    display: flex;
+    gap: 1rem;
+    justify-content: end;
   }
   &__action {
+    cursor: pointer;
   }
 }

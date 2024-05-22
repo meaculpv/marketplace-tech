@@ -1,15 +1,17 @@
 <template>
-  <header>
-    <nav>
-      <ul>
-        <li>
-          <NuxtLink to="/">Products</NuxtLink>
+  <header class="header">
+    <nav class="navigation__nav">
+      <ul class="navigation__list">
+        <li class="navigation__item">
+          <NuxtLink to="/" class="navigation__link">Products</NuxtLink>
         </li>
-        <li>
-          <NuxtLink to="/favorites">Favorites</NuxtLink>
+        <li class="navigation__item">
+          <NuxtLink to="/favorites" class="navigation__link"
+            >Favorites</NuxtLink
+          >
         </li>
-        <li>
-          <NuxtLink to="/bucket">Bucket</NuxtLink>
+        <li class="navigation__item">
+          <NuxtLink to="/bucket" class="navigation__link">Bucket</NuxtLink>
         </li>
       </ul>
     </nav>

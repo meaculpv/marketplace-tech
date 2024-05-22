@@ -6,6 +6,11 @@
     gap: 1rem;
   }
   &__item {
+    cursor: pointer;
     font-size: $default-font-size;
+
+    &:hover {
+      color: $color-primary;
+    }
   }
 }

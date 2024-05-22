@@ -1,0 +1,27 @@
+.header {
+  height: 5vh;
+  @include flexboxCenter();
+  margin-bottom: 2rem;
+}
+
+.navigation {
+  &__nav {
+  }
+  &__list {
+    list-style-type: none;
+
+    @include flexboxCenter();
+    gap: 2rem;
+  }
+  &__item {
+    padding: 1rem;
+    &:hover {
+      background: #eee;
+    }
+  }
+  &__link {
+    font-size: $default-font-size;
+    color: $color-black;
+    text-decoration: none;
+  }
+}
